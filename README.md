@@ -3,44 +3,6 @@
 
 Fake SMTP server for testing with JUnit5
 
-### Minimum requirements
-- Java 8
-- Maven 3.2.5
-- JUnit 5.1
-
-# Using in your project
-
-Add in your pom.xml these modifications
-
-```xml
-<dependencies>
-	...
-	<!-- other dependencies -->
-	<!-- JUnit 5 dependencies -->
-	...
-	<dependency>
-		<groupId>name.bychkov</groupId>
-		<artifactId>junit5-fakesmtp</artifactId>
-		<version>1.0-SNAPSHOT</version>
-		<scope>test</scope>
-	</dependency>
-</dependencies>
-
-<build>
-	<plugins>
-		...
-		<plugin>
-			<artifactId>maven-surefire-plugin</artifactId>
-			<version>2.22.0</version>
-		</plugin>
-	</plugins>
-</build>
-```
-
-Notes:
-
-1) maven-surefire-plugin must have version >= 2.22.0
-
 # Unit-testing with fake smtp-server
 
 ## Problem description
@@ -102,6 +64,44 @@ These actions can be performed automatically. Use in code of your unit-test spec
 		}
 	}
 ```
+
+# Minimum requirements
+- Java 8
+- Maven 3.2.5
+- JUnit 5.1
+
+# Using in your project
+
+Add in your pom.xml these modifications
+
+```xml
+<dependencies>
+	...
+	<!-- other dependencies -->
+	<!-- JUnit 5 dependencies -->
+	...
+	<dependency>
+		<groupId>name.bychkov</groupId>
+		<artifactId>junit5-fakesmtp</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<scope>test</scope>
+	</dependency>
+</dependencies>
+
+<build>
+	<plugins>
+		...
+		<plugin>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>2.22.0</version>
+		</plugin>
+	</plugins>
+</build>
+```
+
+Notes:
+
+1) maven-surefire-plugin must have version >= 2.22.0
 
 ## JavaMail and Jakarta Mail
 
