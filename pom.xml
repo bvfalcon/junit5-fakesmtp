@@ -7,10 +7,10 @@
 
 	<name>JUnit5-Extension FakeSMTP</name>
 	<description>Fake SMTP server for testing with JUnit5</description>
-	<url>https://github.com/bvfalcon/junit5-fakesmtp</url>
+	<url>https://bvfalcon.github.io/junit5-fakesmtp/</url>
 
 	<scm>
-		<url>git@github.com:bvfalcon/junit5-fakesmtp.git</url>
+		<url>https://github.com/bvfalcon/junit5-fakesmtp</url>
 		<connection>scm:git:git@github.com:bvfalcon/junit5-fakesmtp.git</connection>
 		<developerConnection>scm:git:git@github.com:bvfalcon/junit5-fakesmtp.git</developerConnection>
 	</scm>
