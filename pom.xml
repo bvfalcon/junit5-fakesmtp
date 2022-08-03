@@ -153,6 +153,13 @@
 					<plugin>
 						<artifactId>maven-install-plugin</artifactId>
 						<version>${maven-install-plugin.version}</version>
+						<configuration>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+							<packaging>jar</packaging>
+							<pomFile>pom.xml</pomFile>
+						</configuration>
 						<executions>
 							<execution>
 								<id>default-install</id>
@@ -167,13 +174,8 @@
 									<goal>install-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta</classifier>
 									<file>${project.build.directory}/${project.build.finalName}.jar</file>
-									<pomFile>pom.xml</pomFile>
 								</configuration>
 							</execution>
 							<execution>
@@ -183,13 +185,8 @@
 									<goal>install-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta-sources</classifier>
 									<file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
-									<pomFile>pom.xml</pomFile>
 								</configuration>
 							</execution>
 							<execution>
@@ -199,13 +196,8 @@
 									<goal>install-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta-javadoc</classifier>
 									<file>${project.build.directory}/${project.build.finalName}-javadoc.jar</file>
-									<pomFile>pom.xml</pomFile>
 								</configuration>
 							</execution>
 						</executions>
@@ -213,6 +205,15 @@
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<version>${maven-gpg-plugin.version}</version>
+						<configuration>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+							<packaging>jar</packaging>
+							<repositoryId>ossrh</repositoryId>
+							<url>https://${nexus.host}/content/repositories/releases</url>
+							<generatePom>false</generatePom>
+						</configuration>
 						<executions>
 							<execution>
 								<id>deploy-jakarta-classifier</id>
@@ -221,15 +222,8 @@
 									<goal>sign-and-deploy-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta</classifier>
 									<file>${project.build.directory}/${project.build.finalName}.jar</file>
-									<repositoryId>ossrh</repositoryId>
-									<url>https://${nexus.host}/content/repositories/releases</url>
-									<generatePom>false</generatePom>
 								</configuration>
 							</execution>
 							<execution>
@@ -239,15 +233,8 @@
 									<goal>sign-and-deploy-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta-sources</classifier>
 									<file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
-									<repositoryId>ossrh</repositoryId>
-									<url>https://${nexus.host}/content/repositories/releases</url>
-									<generatePom>false</generatePom>
 								</configuration>
 							</execution>
 							<execution>
@@ -257,15 +244,8 @@
 									<goal>sign-and-deploy-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
 									<classifier>jakarta-javadoc</classifier>
 									<file>${project.build.directory}/${project.build.finalName}-javadoc.jar</file>
-									<repositoryId>ossrh</repositoryId>
-									<url>https://${nexus.host}/content/repositories/releases</url>
-									<generatePom>false</generatePom>
 								</configuration>
 							</execution>
 						</executions>
