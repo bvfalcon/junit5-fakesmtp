@@ -1,7 +1,7 @@
 # JUnit5-FakeSMTP
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/name.bychkov/junit5-fakesmtp/badge.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/name.bychkov/junit5-fakesmtp)
 
-Fake SMTP server for testing with JUnit5
+FakeSMTP for unit-testing smtp clients with JUnit 5
 
 # Unit-testing with fake smtp-server
 
