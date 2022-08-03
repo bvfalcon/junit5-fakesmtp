@@ -176,6 +176,38 @@
 									<pomFile>pom.xml</pomFile>
 								</configuration>
 							</execution>
+							<execution>
+								<id>install-jakarta-sources-classifier</id>
+								<phase>install</phase>
+								<goals>
+									<goal>install-file</goal>
+								</goals>
+								<configuration>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+									<packaging>jar</packaging>
+									<classifier>jakarta-sources</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
+									<pomFile>pom.xml</pomFile>
+								</configuration>
+							</execution>
+							<execution>
+								<id>install-jakarta-javadoc-classifier</id>
+								<phase>install</phase>
+								<goals>
+									<goal>install-file</goal>
+								</goals>
+								<configuration>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+									<packaging>jar</packaging>
+									<classifier>jakarta-javadoc</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-javadoc.jar</file>
+									<pomFile>pom.xml</pomFile>
+								</configuration>
+							</execution>
 						</executions>
 					</plugin>
 					<plugin>
@@ -195,6 +227,42 @@
 									<packaging>jar</packaging>
 									<classifier>jakarta</classifier>
 									<file>${project.build.directory}/${project.build.finalName}.jar</file>
+									<repositoryId>ossrh</repositoryId>
+									<url>https://${nexus.host}/content/repositories/releases</url>
+									<generatePom>false</generatePom>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-jakarta-sources-classifier</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sign-and-deploy-file</goal>
+								</goals>
+								<configuration>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+									<packaging>jar</packaging>
+									<classifier>jakarta-sources</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
+									<repositoryId>ossrh</repositoryId>
+									<url>https://${nexus.host}/content/repositories/releases</url>
+									<generatePom>false</generatePom>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-jakarta-javadoc-classifier</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sign-and-deploy-file</goal>
+								</goals>
+								<configuration>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+									<packaging>jar</packaging>
+									<classifier>jakarta-javadoc</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-javadoc.jar</file>
 									<repositoryId>ossrh</repositoryId>
 									<url>https://${nexus.host}/content/repositories/releases</url>
 									<generatePom>false</generatePom>
