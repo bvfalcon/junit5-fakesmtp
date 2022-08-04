@@ -1,5 +1,6 @@
 # JUnit5-FakeSMTP
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/name.bychkov/junit5-fakesmtp/badge.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/name.bychkov/junit5-fakesmtp)
+[![License](https://img.shields.io/:license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 
 FakeSMTP for unit-testing smtp clients with JUnit 5
 
@@ -119,4 +120,4 @@ By default, implementation uses JavaMail realization (namespaces `javax.mail.`).
 
 ## More samples
 
-You can see full examples of usage JUnit5-FakeSMTP with [JavaMail](./src/it/javamail/) and [Jakarta Mail](./src/it/jakartamail/).
+You can see full examples of usage JUnit5-FakeSMTP with [JavaMail](https://github.com/bvfalcon/junit5-fakesmtp/tree/1.0.1/src/it/javamail) and [Jakarta Mail](https://github.com/bvfalcon/junit5-fakesmtp/tree/1.0.1/src/it/jakartamail).
