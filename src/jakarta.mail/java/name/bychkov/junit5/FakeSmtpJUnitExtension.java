@@ -16,6 +16,24 @@ public class FakeSmtpJUnitExtension extends AbstractFakeSmtpJUnitExtension
 		return this;
 	}
 	
+	public FakeSmtpJUnitExtension host(String host)
+	{
+		super.host(host);
+		return this;
+	}
+	
+	public FakeSmtpJUnitExtension user(String user)
+	{
+		super.user(user);
+		return this;
+	}
+	
+	public FakeSmtpJUnitExtension password(String password)
+	{
+		super.password(password);
+		return this;
+	}
+	
 	public List<MimeMessage> getMessages() throws MessagingException
 	{
 		List<MimeMessage> messages = new ArrayList<>(server.getMessages().size());
