@@ -238,6 +238,15 @@
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<version>${maven-gpg-plugin.version}</version>
+						<configuration>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+							<packaging>jar</packaging>
+							<repositoryId>ossrh</repositoryId>
+							<url>https://${nexus.host}/content/repositories/releases</url>
+							<generatePom>false</generatePom>
+						</configuration>
 						<executions>
 							<execution>
 								<id>deploy-jakarta-classifier</id>
@@ -246,15 +255,30 @@
 									<goal>sign-and-deploy-file</goal>
 								</goals>
 								<configuration>
-									<groupId>${project.groupId}</groupId>
-									<artifactId>${project.artifactId}</artifactId>
-									<version>${project.version}</version>
-									<packaging>jar</packaging>
-									<repositoryId>ossrh</repositoryId>
-									<url>https://${nexus.host}/content/repositories/releases</url>
-									<generatePom>false</generatePom>
-									<classifiers>jakarta,jakarta-sources,jakarta-javadoc</classifiers>
-									<files>${project.build.directory}/${project.build.finalName}.jar,${project.build.directory}/${project.build.finalName}-sources.jar,${project.build.directory}/${project.build.finalName}-javadoc.jar</files>
+									<classifier>jakarta</classifier>
+									<file>${project.build.directory}/${project.build.finalName}.jar</file>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-jakarta-sources-classifier</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sign-and-deploy-file</goal>
+								</goals>
+								<configuration>
+									<classifier>jakarta-sources</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-sources.jar</file>
+								</configuration>
+							</execution>
+							<execution>
+								<id>deploy-jakarta-javadoc-classifier</id>
+								<phase>deploy</phase>
+								<goals>
+									<goal>sign-and-deploy-file</goal>
+								</goals>
+								<configuration>
+									<classifier>jakarta-javadoc</classifier>
+									<file>${project.build.directory}/${project.build.finalName}-javadoc.jar</file>
 								</configuration>
 							</execution>
 						</executions>
@@ -280,6 +304,9 @@
 		</profile>
 		<profile>
 			<id>java.mail</id>
+			<properties>
+				<gpg.executable>gpg</gpg.executable>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>com.github.bvfalcon</groupId>
@@ -338,6 +365,30 @@
 								</goals>
 							</execution>
 						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>${nexus-staging-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://${nexus.host}/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+						</configuration>
 					</plugin>
 					<plugin>
 						<artifactId>maven-invoker-plugin</artifactId>
@@ -414,30 +465,6 @@
 						</executions>
 						<configuration>
 							<doclint>none</doclint>
-						</configuration>
-					</plugin>
-					<plugin>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>${maven-gpg-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.sonatype.plugins</groupId>
-						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>${nexus-staging-maven-plugin.version}</version>
-						<extensions>true</extensions>
-						<configuration>
-							<serverId>ossrh</serverId>
-							<nexusUrl>https://${nexus.host}/</nexusUrl>
-							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
 					</plugin>
 				</plugins>
