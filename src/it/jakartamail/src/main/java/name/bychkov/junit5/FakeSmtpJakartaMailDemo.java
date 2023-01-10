@@ -27,6 +27,8 @@ public class FakeSmtpJakartaMailDemo
 		simpleMail.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
 		simpleMail.setText(body, StandardCharsets.UTF_8.toString());
 		
-		Transport.send(simpleMail);
+		Transport transport = session.getTransport("smtp");
+		transport.send(simpleMail);
+		transport.close();
 	}
 }
